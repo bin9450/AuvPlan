@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auv.mapper.ScoreMapper">
+    <resultMap id="BaseResultMap" type="com.auv.entity.Score">
+        <result column="ScoreID" jdbcType="INTEGER" property="scoreID" />
+        <result column="UserID" jdbcType="INTEGER" property="userID" />
+        <result column="Score" jdbcType="INTEGER" property="score" />
+        <result column="Rank" jdbcType="INTEGER" property="rank" />
+        <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime" />
+    </resultMap>
+
+    <select id="getMyscore" resultType="Score">
+        select * from tb_score where UserID = #{userID}
+    </select>
+
+    <select id="getRank" resultType="Score">
+        SELECT * FROM tb_score ORDER BY Rank limit 0,10
+    </select>
+
+    <select id="getCount" resultType="Score">
+       SELECT COUNT(*) FROM tb_score
+    </select>
+
+    <insert id="upload" parameterType="Score">
+        INSERT INTO tb_score (UserID,Score,Rank,CreateTime) VALUES (#{userID},#{score},#{rank},#{createTime})
+    </insert>
+
+</mapper>

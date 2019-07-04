@@ -1,6 +1,7 @@
 package com.auv.mapper;
 
 import com.auv.entity.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,7 +12,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMapper {
     User sel(int userID);
-    User login(String loginName,String passWord);
+    User login(@Param("loginName") String loginName,@Param("passWord") String passWord);
     User isRepeat(String loginName);
     int register(User user);
+    int changePSW(@Param("userID") int userID,@Param("passWord") String passWord,@Param("newPassWord") String newPassWord);
+    int changeInfo(@Param("userID") int userID,@Param("headUrl") String headUrl,@Param("nickName") String nickName);
+    User getInfo(int userID);
 }

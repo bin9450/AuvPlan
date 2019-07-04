@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.auv.mapper.ScoreMapper">
-    <resultMap id="BaseResultMap" type="com.auv.entity.Score">
-        <result column="ScoreID" jdbcType="INTEGER" property="scoreID" />
+<mapper namespace="com.auv.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.auv.entity.User">
         <result column="UserID" jdbcType="INTEGER" property="userID" />
-        <result column="Score" jdbcType="INTEGER" property="score" />
-        <result column="Rank" jdbcType="INTEGER" property="rank" />
-        <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="LoginName" jdbcType="VARCHAR" property="loginName"/>
+        <result column="PassWord" jdbcType="VARCHAR" property="passWord"/>
+        <result column="TimeStamp" jdbcType="TIMESTAMP" property="time" />
     </resultMap>
 
-    <select id="getMyscore" resultType="Score">
-        select * from tb_score where UserID = #{userID}
+    <select id="sel" resultType="com.auv.entity.User" >
+        select * from tb_user where UserID = #{userID}
     </select>
 
-    <select id="getRank" resultType="Score">
-        SELECT * FROM tb_score ORDER BY Rank limit 0,10
+    <select id="login" resultType="com.auv.entity.User" >
+        SELECT * FROM tb_user where LoginName = #{loginName} and PassWord = #{passWord}
     </select>
 
-    <select id="getCount" resultType="Score">
-       SELECT COUNT(*) FROM tb_score
+    <select id="isRepeat" resultType="com.auv.entity.User" >
+        SELECT * FROM tb_user where LoginName = #{loginName}
     </select>
 
-    <insert id="upload" parameterType="Score">
-        INSERT INTO tb_score (UserID,Score,Rank,CreateTime) VALUES (#{userID},#{score},#{rank},#{createTime})
+    <insert id="register" parameterType="com.auv.entity.User">
+        INSERT INTO tb_user (LoginName, PassWord) VALUES (#{loginName}, #{passWord})
     </insert>
+
+    <update id="changePSW"  parameterType="com.auv.entity.User">
+        UPDATE tb_user  SET PassWord = #{newPassWord} WHERE `UserID` = #{userID} and PassWord = #{passWord}
+    </update>
+    <update id="changeInfo" parameterType="com.auv.entity.User">
+        UPDATE tb_user  SET NickName = #{nickName},HeadUrl = #{headUrl} WHERE `UserID` = #{userID}
+    </update>
+    <select id="getInfo" resultType="com.auv.entity.User" >
+        select * from tb_user where UserID = #{userID}
+    </select>
+
+
 
 </mapper>

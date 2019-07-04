@@ -34,4 +34,19 @@ public class UserServicelmpl implements UserService{
     public int register(User user) {
         return userMapper.register(user);
     }
+
+    @Override
+    public int changePSW( int userID, String passWord,String newPassWord) {
+        return userMapper.changePSW(userID, passWord,newPassWord);
+    }
+
+    @Override
+    public int changeInfo(int userID,String headUrl,String nickName) {
+        return userMapper.changeInfo(userID,headUrl,nickName);
+    }
+
+    @Override
+    public User getInfo(int userID) {
+        return userMapper.getInfo(userID);
+    }
 }

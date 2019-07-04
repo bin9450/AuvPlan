@@ -12,4 +12,7 @@ public interface UserService {
     User login(String loginName,String passWord);
     User isRepeat(String loginName);
     int register(User user);
+    int changePSW(int userID,String newPassWord, String passWord);
+    int changeInfo(int userID,String headUrl, String nickName);
+    User getInfo(int userID);
 }

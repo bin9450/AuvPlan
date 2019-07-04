@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 mybatis:
   mapper-locations: classpath:mapping/*Mapping.xml
@@ -7,9 +7,9 @@ mybatis:
 
 spring:
   datasource:
-    username: root
-    password: root
-    url: jdbc:mysql://localhost:3306/dronevr?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: sa
+    password: Embed-212!2018
+    url: jdbc:mysql://211.87.227.223:8306/dronevr?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
   mvc:
     static-path-pattern: /static/*

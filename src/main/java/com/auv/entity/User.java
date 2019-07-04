@@ -19,7 +19,8 @@ public class User {
     private String nickName;
     private String loginName;
     private String passWord;
-    private String headURL;
-    private int totalScore;
+    private String headUrl;
+    private Integer totalScore;
+    private Integer bestScore;
     private Date time;
 }
