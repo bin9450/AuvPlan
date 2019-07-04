@@ -16,8 +16,7 @@ public interface ScoreMapper {
     List<Score> getMyscore(@Param("userID") int userID,
                     @Param("limits") int limits,
                     @Param("limite") int limite);
-    int upload(@Param("userID") int userID,
-               @Param("localScore") int localScore);
+    int upload(Score score);
     int getCount(@Param("userID") int userID);
     List<Score> getRank();
 }

@@ -3,9 +3,11 @@ package com.auv.servicelmpl;
 import com.auv.entity.Score;
 import com.auv.mapper.ScoreMapper;
 import com.auv.service.ScoreService;;
+import com.auv.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,6 +20,8 @@ import java.util.List;
 public class ScoreServicelmpl implements ScoreService {
     @Autowired
     ScoreMapper scoreMapper;
+
+    DateUtil dateUtil = new DateUtil();
     private static final int pageCount = 10;    //每页的数量
 
     @Override
@@ -29,8 +33,9 @@ public class ScoreServicelmpl implements ScoreService {
     }
 
     @Override
-    public HashMap<String,Object> upload(int userID, int localScore) {
-        int result = scoreMapper.upload(userID,localScore);
+    public HashMap<String,Object> upload(Score score) {
+        score.setCreateTime(new Date());
+        int result = scoreMapper.upload(score);
         Integer i = new Integer(result);
         HashMap<String,Object> hashResult = new HashMap<>();
         hashResult.put("code",i);

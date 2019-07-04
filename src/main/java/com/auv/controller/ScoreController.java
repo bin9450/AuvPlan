@@ -30,8 +30,8 @@ public class ScoreController {
     }
 
     @PostMapping("/upload")
-    public HashMap<String,Object> upload(int userID, int localScore) {
-        return scoreService.upload(userID,localScore);
+    public HashMap<String,Object> upload(Score score) {
+        return scoreService.upload(score);
     }
 
 }

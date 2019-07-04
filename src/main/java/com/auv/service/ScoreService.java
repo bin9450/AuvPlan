@@ -12,7 +12,7 @@ import java.util.List;
  **/
 public interface ScoreService {
     List<Score> getMyscore(int userID, int page);
-    HashMap<String,Object> upload(int userID, int localScore);
+    HashMap<String,Object> upload(Score score);
     int getCount(int userID);
     List<Score> getRank();
 }
