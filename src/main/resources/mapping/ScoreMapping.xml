@@ -14,7 +14,7 @@
     </select>
 
     <select id="getRank" resultType="Score">
-        SELECT * FROM tb_score ORDER BY Rank limit 0,10
+        SELECT * FROM tb_score ORDER BY Rank limit #{limits},#{limite}
     </select>
 
     <select id="getCount" resultType="Score">

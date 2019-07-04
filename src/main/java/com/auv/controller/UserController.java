@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @Author: Pan
@@ -132,6 +133,17 @@ public class UserController {
             hm.put("code",0);
             return  hm;
         }
+    }
+
+    @GetMapping("/getPageList")
+    public List<User> getPageList(@RequestParam int page){
+        List<User> result = userService.getList(page);
+        return result;
+    }
+
+    @GetMapping("/getCount")
+    public int getCount(){
+        return userService.getCount();
     }
 
 }

@@ -1,6 +1,9 @@
 package com.auv.service;
 
 import com.auv.entity.User;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @Author: Pan
@@ -15,4 +18,6 @@ public interface UserService {
     int changePSW(int userID,String newPassWord, String passWord);
     int changeInfo(int userID,String headUrl, String nickName);
     User getInfo(int userID);
+    List<User> getList(int page);
+    int getCount();
 }

@@ -34,6 +34,12 @@
         select * from tb_user where UserID = #{userID}
     </select>
 
+    <select id="getList" resultType="com.auv.entity.User">
+       select * from tb_user limit #{start},#{num}
+    </select>
 
+    <select id="getCount">
+        select COUNT(*) from tb_user
+    </select>
 
 </mapper>
