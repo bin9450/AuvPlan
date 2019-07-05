@@ -83,14 +83,14 @@ public class UserController {
     }
 
     @PostMapping("/ChangePSW")
-    public HashMap<String,Integer> changePSW(int UserID,String LastPassWord,String NewPassWord){
-        int result = userService.changePSW(UserID,MD5Util.md5(LastPassWord),MD5Util.md5(NewPassWord));
+    public HashMap<String,Integer> changePSW(int userID,String lastPassWord,String newPassWord){
+        int result = userService.changePSW(userID,MD5Util.md5(lastPassWord),MD5Util.md5(newPassWord));
         HashMap<String,Integer> hm = new HashMap<>();
         hm.put("code",result);
         return hm;
     }
 
-    @PostMapping("/changeInfo")
+    @PostMapping("/ChangeInfo")
     public HashMap<String,Integer> changeInfo(int UserID,String HeadUrl,String NickName){
         int result = userService.changeInfo(UserID,HeadUrl,NickName);
         HashMap<String,Integer> hm = new HashMap<>();
@@ -99,8 +99,8 @@ public class UserController {
     }
 
     @PostMapping("/Info")
-    public HashMap<String,Object> getInfo(int UserID) {
-        User result = userService.getInfo(UserID);
+    public HashMap<String,Object> getInfo(int userID) {
+        User result = userService.getInfo(userID);
         HashMap<String,Object> hm = new HashMap<>();
         if (result == null){
             hm.put("code",0);

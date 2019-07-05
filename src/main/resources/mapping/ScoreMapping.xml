@@ -10,11 +10,11 @@
     </resultMap>
 
     <select id="getMyscore" resultType="Score">
-        select * from tb_score where UserID = #{userID}
+        select * from tb_score where UserID = #{userID}  limit #{limits},#{limite}
     </select>
 
     <select id="getRank" resultType="Score">
-        SELECT * FROM tb_score ORDER BY Rank limit #{limits},#{limite}
+        SELECT * FROM tb_score ORDER BY Rank limit 0,10
     </select>
 
     <select id="getCount" resultType="Score">

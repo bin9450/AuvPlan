@@ -21,7 +21,7 @@
     </select>
 
     <insert id="register" parameterType="com.auv.entity.User">
-        INSERT INTO tb_user (LoginName, PassWord) VALUES (#{loginName}, #{passWord})
+        INSERT INTO tb_user (LoginName, PassWord,TotalScore) VALUES (#{loginName}, #{passWord},0)
     </insert>
 
     <update id="changePSW"  parameterType="com.auv.entity.User">
@@ -40,6 +40,17 @@
 
     <select id="getCount">
         select COUNT(*) from tb_user
+    </select>
+
+    <update id="changeScore">
+         UPDATE tb_user  SET totalScore = totalScore + #{totalScore} WHERE `UserID` = #{userID}
+    </update>
+    <update id="changeBestScore">
+        UPDATE tb_user  SET BestScore = #{bestScore} WHERE #{bestScore} > BestScore and `UserID` = #{userID}
+    </update>
+
+    <select id="getTotalRank" resultType="com.auv.entity.User">
+        select * from tb_user order BY totalScore desc limit 0,10
     </select>
 
 </mapper>

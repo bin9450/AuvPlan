@@ -1,6 +1,7 @@
 package com.auv.service;
 
 import com.auv.entity.Score;
+import com.auv.entity.User;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +13,8 @@ import java.util.List;
  **/
 public interface ScoreService {
     List<Score> getMyscore(int userID, int page);
-    HashMap<String,Object> upload(Score score);
+    HashMap<String,Object> upload(Score score,int userID);
     int getCount(int userID);
     List<Score> getRank();
+    List<User> getTotalRank();
 }

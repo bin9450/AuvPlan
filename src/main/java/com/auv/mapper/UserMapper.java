@@ -22,4 +22,7 @@ public interface UserMapper {
     User getInfo(int userID);
     List<User> getList(@Param("start") int start,@Param("num") int num);
     int getCount();
+    int changeScore(@Param("userID") int userID,@Param("totalScore") int totalScore);
+    int changeBestScore(@Param("userID") int userID,@Param("bestScore") int bestScore);
+    List<User> getTotalRank();
 }

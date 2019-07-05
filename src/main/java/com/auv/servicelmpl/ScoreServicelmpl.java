@@ -1,7 +1,9 @@
 package com.auv.servicelmpl;
 
 import com.auv.entity.Score;
+import com.auv.entity.User;
 import com.auv.mapper.ScoreMapper;
+import com.auv.mapper.UserMapper;
 import com.auv.service.ScoreService;;
 import com.auv.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ import java.util.List;
 public class ScoreServicelmpl implements ScoreService {
     @Autowired
     ScoreMapper scoreMapper;
+    @Autowired
+    UserMapper userMapper;
 
     DateUtil dateUtil = new DateUtil();
     private static final int pageCount = 10;    //每页的数量
@@ -33,9 +37,12 @@ public class ScoreServicelmpl implements ScoreService {
     }
 
     @Override
-    public HashMap<String,Object> upload(Score score) {
+    public HashMap<String,Object> upload(Score score,int userID) {
         score.setCreateTime(new Date());
+        score.setUserID(userID);
         int result = scoreMapper.upload(score);
+        int upTotalScore = userMapper.changeScore(userID,score.getScore());
+        int upBestScore = userMapper.changeBestScore(userID,score.getScore());
         Integer i = new Integer(result);
         HashMap<String,Object> hashResult = new HashMap<>();
         hashResult.put("code",i);
@@ -52,4 +59,11 @@ public class ScoreServicelmpl implements ScoreService {
         List<Score> result = scoreMapper.getRank();
         return  result;
     }
+
+    @Override
+    public List<User> getTotalRank() {
+        return userMapper.getTotalRank();
+    }
+
+
 }
