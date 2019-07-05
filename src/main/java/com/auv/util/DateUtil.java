@@ -10,10 +10,9 @@ import java.util.Date;
  **/
 public class DateUtil {
 
-    @Override
-    public String toString() {
+    public String toName() {
         Date date = new Date();
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
         return sdf.format(date);
     }
 

@@ -2,6 +2,8 @@ package com.auv.controller;
 
 import com.auv.entity.User;
 import com.auv.service.UserService;
+import com.auv.util.DateUtil;
+import com.auv.util.FileUpload;
 import com.auv.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -113,26 +115,8 @@ public class UserController {
 
     @PostMapping("uploadHeadImg")
     public HashMap<String,Object> upload(MultipartFile fileUpload){
-        HashMap<String,Object> hm = new HashMap<>();
-        //获取文件名
-        String fileName = fileUpload.getOriginalFilename();
-        //获取文件后缀名
-        String suffixName = fileName.substring(fileName.lastIndexOf("."));
-        //重新生成文件名
-        fileName = "1"+suffixName;
-        //指定本地文件夹存储图片
-        String filePath = "E:/Administrator/Downloads/userimg/";
-        try {
-            //将图片保存到static文件夹里
-            fileUpload.transferTo(new File(filePath+fileName));
-            hm.put("code",1);
-            hm.put("HeadUrl","211.87.227.223/"+filePath+fileName);
-            return hm;
-        } catch (Exception e) {
-            e.printStackTrace();
-            hm.put("code",0);
-            return  hm;
-        }
+        FileUpload fud = new FileUpload();
+        return fud.addFile(fileUpload,"E:/auvres/user/");
     }
 
     @GetMapping("/getPageList")

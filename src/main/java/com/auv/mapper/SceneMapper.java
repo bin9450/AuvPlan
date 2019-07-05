@@ -1,6 +1,7 @@
 package com.auv.mapper;
 
 import com.auv.entity.Scene;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,10 +13,7 @@ import java.util.List;
  **/
 @Repository
 public interface SceneMapper {
-    int adminUpload(Scene scene);
-    int addScene(Scene scene);
+    List<Scene> getList(@Param("limits") int limits,@Param("limite") int limite);
+    Scene getScene(@Param("sceneID") int sceneID);
     int getCount();
-    List<Scene> getList();
-    Scene getScene(int sceneID);
-    List<Scene> getHistory(int sceneID);
 }

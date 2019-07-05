@@ -1,40 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.auv.mapper.SceneMapper">
-<!--    <resultMap id="BaseResultMap" type="com.auv.entity.Scene">
-        <result column="UserID" jdbcType="INTEGER" property="userID" />
-        <result column="LoginName" jdbcType="VARCHAR" property="loginName"/>
-        <result column="PassWord" jdbcType="VARCHAR" property="passWord" />
-        <result column="TimeStamp" jdbcType="VARCHAR" property="time" />
-    </resultMap>-->
+    <resultMap id="BaseResultMap" type="com.auv.entity.Scene">
+        <result column="SceneID" jdbcType="INTEGER" property="sceneID" />
+        <result column="SceneName" jdbcType="VARCHAR" property="sceneName"/>
+        <result column="SceneFileURL" jdbcType="VARCHAR" property="description" />
+        <result column="LastUpdateTime" jdbcType="VARCHAR" property="lastUpdateTime" />
+    </resultMap>
 
-<!--    <insert id="adminUpload" parameterType="Scene">
-
-    </insert>
-
-    <insert id="addScene" parameterType="Scene">
-
-    </insert>
-
-    <select id="getCount" parameterType="Scene">
-
+    <select id="getList" resultType="com.auv.entity.Scene">
+        select * FROM tb_scene limit  #{limits},#{limite}
     </select>
 
-    <select id="getList" resultType="Scene">
-
+    <select id="getScene" resultType="com.auv.entity.Scene">
+        select * FROM tb_scene WHERE SceneID = #{sceneID}
     </select>
 
-    <select id="getScene" resultType="Scene">
-
+    <select id="getCount" resultType ="java.lang.Integer" >
+        select COUNT(*) FROM tb_scene
     </select>
-
-    <select id="getHistory" resultType="Scene">
-
-    </select>
-
-    <select id="getHistory" resultType="Scene">
-
-    </select>-->
 
 </mapper>
 

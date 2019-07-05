@@ -24,11 +24,11 @@ public class UserInterceptor implements HandlerInterceptor {
        // System.out.println("执行到了preHandle方法");
         //System.out.println(handler);
         User user = (User) request.getSession().getAttribute("session_user");
-/*        if(user == null){
+        if(user == null){
            // response.sendRedirect(request.getContextPath()+"/user/toLogin"); //拦截后跳转
             System.out.println("已成功拦截并跳转");
             return false;
-        }*/
+        }
         System.out.println("合格不需要拦截");
         return true;
     }

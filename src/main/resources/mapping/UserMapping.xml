@@ -38,7 +38,7 @@
        select * from tb_user limit #{start},#{num}
     </select>
 
-    <select id="getCount">
+    <select id="getCount" resultType ="java.lang.Integer">
         select COUNT(*) from tb_user
     </select>
 
