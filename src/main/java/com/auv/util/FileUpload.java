@@ -24,9 +24,9 @@ public class FileUpload {
         //指定本地文件夹存储图片
         try {
             //将图片保存到static文件夹里
-            fileUpload.transferTo(new File(filePath+fileName));
+            fileUpload.transferTo(new File("D:"+filePath+fileName));
             hm.put("code",1);
-            hm.put("url","211.87.227.223/"+filePath+fileName);
+            hm.put("url",filePath+fileName);
             return hm;
         } catch (Exception e) {
             e.printStackTrace();

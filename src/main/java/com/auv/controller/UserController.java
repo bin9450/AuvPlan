@@ -116,7 +116,7 @@ public class UserController {
     @PostMapping("uploadHeadImg")
     public HashMap<String,Object> upload(MultipartFile fileUpload){
         FileUpload fud = new FileUpload();
-        return fud.addFile(fileUpload,"E:/auvres/user/");
+        return fud.addFile(fileUpload,"/auvres/user/");
     }
 
     @GetMapping("/getPageList")

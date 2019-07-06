@@ -42,6 +42,6 @@ public class SceneController {
     @PostMapping("/add")
     public HashMap<String,Object> addScene(MultipartFile sceneFile){
         FileUpload fud = new FileUpload();
-        return fud.addFile(sceneFile,"E:/auvres/scene/");
+        return fud.addFile(sceneFile,"/auvres/scene/");
     }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auv.mapper.ApkMapper">
+    <resultMap id="BaseResultMap" type="com.auv.entity.Apk">
+        <result column="VersionID" jdbcType="INTEGER" property="versionID" />
+        <result column="ApkFileURL" jdbcType="VARCHAR" property="apkFileURL"/>
+        <result column="VersionNo" jdbcType="VARCHAR" property="versionNo" />
+        <result column="detail" jdbcType="VARCHAR" property="detail" />
+        <result column="fileLength" jdbcType="INTEGER" property="fileLength" />
+        <result column="UpdateTime" jdbcType="VARCHAR" property="updateTime" />
+    </resultMap>
+    <select id="getCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) from tb_apk_update
+    </select>
+
+    <select id="getList" resultType="com.auv.entity.Apk">
+        SELECT * from tb_apk_update limit  #{limits},#{limite}
+    </select>
+
+    <insert id="insertNew" parameterType="com.auv.entity.Apk">
+        INSERT INTO `dronevr`.`tb_apk_update` (
+  `ApkFileURL`,
+  `VersionNo`,
+  `Detail`,
+  `FileLength`
+  ) VALUES (#{apkFileURL},#{versionNo},#{detail},#{fileLength})
+    </insert>
+
+</mapper>
+
