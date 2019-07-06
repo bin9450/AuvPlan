@@ -31,6 +31,12 @@ public class UserController {
 
     private static final String key = "wasd";
 
+    @GetMapping("/toLogin")
+    public String toLogin(){
+        String message = "请求非法，请登录后在尝试";
+        return message;
+    }
+
     @PostMapping("/login")
     public  HashMap<String,Object> loginCheck(User user, HttpServletRequest request,String sign){
         HashMap<String,Object> hm = new HashMap<>();

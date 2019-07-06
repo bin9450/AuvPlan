@@ -13,8 +13,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MvcConfig implements WebMvcConfigurer{
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/auvres/user/**").addResourceLocations("file:D:/auvres/user");
-        registry.addResourceHandler("/auvres/scene/**").addResourceLocations("file:D:/auvres/scene");
-        registry.addResourceHandler("/auvres/apk/**").addResourceLocations("file:D:/auvres/apk");
+        registry.addResourceHandler("/auvres/user/**").addResourceLocations("file:D:/auvres/user/");
+        registry.addResourceHandler("/auvres/scene/**").addResourceLocations("file:D:/auvres/scene/");
+        registry.addResourceHandler("/auvres/apk/**").addResourceLocations("file:D:/auvres/apk/");
     }
 }

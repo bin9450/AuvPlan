@@ -11,5 +11,5 @@ spring:
     password: Embed-212!2018
     url: jdbc:mysql://211.87.227.223:8306/dronevr?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
-  mvc:
-    static-path-pattern: /static/*
+
+
