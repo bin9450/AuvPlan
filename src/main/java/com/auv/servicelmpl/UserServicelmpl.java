@@ -4,9 +4,12 @@ import com.auv.entity.Score;
 import com.auv.entity.User;
 import com.auv.mapper.UserMapper;
 import com.auv.service.UserService;
+import com.auv.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,6 +22,7 @@ public class UserServicelmpl implements UserService{
    @Autowired
     UserMapper userMapper;
     private final static int pageCount = 10;
+    private DateUtil dateUtil = new DateUtil();
     @Override
     public User sel(int userID) {
         return userMapper.sel(userID);
@@ -30,12 +34,18 @@ public class UserServicelmpl implements UserService{
     }
 
     @Override
+    public void loginTime(String loginName, Date lastLoginTime) {
+        userMapper.loginTime(loginName, lastLoginTime);
+    }
+
+    @Override
     public User isRepeat(String loginName) {
         return userMapper.isRepeat(loginName);
     }
 
     @Override
-    public int register(User user) {
+    public int register(User user)  {
+
         return userMapper.register(user);
     }
 
@@ -45,8 +55,8 @@ public class UserServicelmpl implements UserService{
     }
 
     @Override
-    public int changeInfo(int userID,String headUrl,String nickName) {
-        return userMapper.changeInfo(userID,headUrl,nickName);
+    public int changeInfo(User user) {
+        return userMapper.changeInfo(user);
     }
 
     @Override

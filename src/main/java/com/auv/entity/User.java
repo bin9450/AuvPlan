@@ -20,7 +20,10 @@ public class User {
     private String loginName;
     private String passWord;
     private String headUrl;
+    private int sex;
     private Integer totalScore;
     private Integer bestScore;
-    private Date time;
+    private Date lastLoginTime;
+    private Date registerTime;
+
 }
