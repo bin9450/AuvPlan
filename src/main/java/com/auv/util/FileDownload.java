@@ -15,8 +15,8 @@ import java.io.*;
  **/
 public class FileDownload {
 
-    public ResponseEntity<byte[]> downloadsEntity(HttpServletRequest request,String fileName) throws Exception{
-        String	path = "D:/auvres/apk/";
+    public ResponseEntity<byte[]> downloadsEntity(HttpServletRequest request,String path,String fileName) throws Exception{
+        //String	path = "D:/auvres/apk/";
       //  String  fileName = "default.png";
         File file=new File(path,fileName);
         if(!file.isFile()){

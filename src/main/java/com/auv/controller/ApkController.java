@@ -56,7 +56,7 @@ public class ApkController {
     @GetMapping("/download")
     public ResponseEntity<byte[]> downloadsEntity(HttpServletRequest request,@RequestParam String fileName) throws Exception {
         FileDownload fileDownload = new FileDownload();
-        return  fileDownload.downloadsEntity(request,fileName);
+        return  fileDownload.downloadsEntity(request,"D:/auvres/apk/",fileName);
     }
 
 
