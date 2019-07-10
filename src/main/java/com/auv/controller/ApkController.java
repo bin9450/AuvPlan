@@ -2,11 +2,15 @@ package com.auv.controller;
 
 import com.auv.entity.Apk;
 import com.auv.service.ApkService;
+import com.auv.util.FileDownload;
 import com.auv.util.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 
@@ -48,5 +52,12 @@ public class ApkController {
         }
         return hm;
     }
+
+    @GetMapping("/download")
+    public ResponseEntity<byte[]> downloadsEntity(HttpServletRequest request,@RequestParam String fileName) throws Exception {
+        FileDownload fileDownload = new FileDownload();
+        return  fileDownload.downloadsEntity(request,fileName);
+    }
+
 
 }

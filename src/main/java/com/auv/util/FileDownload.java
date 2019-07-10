@@ -1,5 +1,9 @@
 package com.auv.util;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -10,8 +14,28 @@ import java.io.*;
  * @Description:
  **/
 public class FileDownload {
-    public String downloadFile(HttpServletRequest request, HttpServletResponse response) {
-        String fileName = "dalaoyang.jpeg";// 文件名
+
+    public ResponseEntity<byte[]> downloadsEntity(HttpServletRequest request,String fileName) throws Exception{
+        String	path = "D:/auvres/apk/";
+      //  String  fileName = "default.png";
+        File file=new File(path,fileName);
+        if(!file.isFile()){
+            return null;
+        }
+        @SuppressWarnings("resource")
+        InputStream input=new FileInputStream(file);
+        byte[] buff=new byte[input.available()]; // 获取文件大小
+        input.read(buff) ;
+        HttpHeaders headers=new HttpHeaders();
+        headers.add("Content-Disposition", "attachment;filename="+fileName);
+        HttpStatus status=HttpStatus.OK;
+        ResponseEntity<byte[]> entity=new ResponseEntity<byte[]>(buff,headers,status);
+        return  entity;
+    }
+
+
+    /*public String downloadFile(HttpServletRequest request, HttpServletResponse response, String fileName) {
+         fileName = "dalaoyang.jpeg";// 文件名
         if (fileName != null) {
             //设置文件路径
             File file = new File("/Users/dalaoyang/Documents/dalaoyang.jpeg");
@@ -53,5 +77,5 @@ public class FileDownload {
             }
         }
         return "下载失败";
-    }
+    }*/
 }
